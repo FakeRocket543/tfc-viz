@@ -1,38 +1,82 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'>
-<title>TFC BERTopic 視覺化報告</title>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TFC 主題分布視覺化</title>
 <style>
-body{font-family:'Noto Sans TC',Arial,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#fafafa}
-h1{color:#1a237e}h2{color:#283593;margin-top:2em}
-a{color:#1565c0;text-decoration:none}a:hover{text-decoration:underline}
-li{margin:8px 0;font-size:1.1em}
-.meta{color:#666;font-size:0.9em}
-</style></head><body>
-<h1>🔍 台灣事實查核中心 — BERTopic 視覺化報告</h1>
-<p class='meta'>產生時間: 2026-04-29 16:09</p>
-<h2>📊 模型: claim</h2><ul>
-<li><a href='claim_barchart.html'>Barchart</a></li>
-<li><a href='claim_dendrogram.html'>Dendrogram</a></li>
-<li><a href='claim_intertopic_map.html'>Intertopic Map</a></li>
-<li><a href='claim_sunburst.html'>Sunburst</a></li>
-<li><a href='claim_treemap.html'>Treemap</a></li>
+*{box-sizing:border-box}
+body{font-family:'Noto Sans TC','Helvetica Neue',Arial,sans-serif;max-width:960px;margin:0 auto;padding:40px 24px;background:#fafafa;color:#222;line-height:1.7}
+h1{color:#1a237e;font-size:1.8em;margin-bottom:0.2em}
+h2{color:#283593;margin-top:2.5em;padding-bottom:0.3em;border-bottom:2px solid #e8eaf6}
+h3{color:#37474f;margin-top:1.5em}
+a{color:#1565c0;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+a:hover{border-bottom-color:#1565c0}
+.subtitle{color:#555;font-size:1.05em;margin-top:0}
+.meta{color:#888;font-size:0.85em;margin-top:0.5em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:12px}
+.card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;transition:box-shadow .2s}
+.card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card a{font-weight:500;font-size:1.05em}
+.card .desc{color:#666;font-size:0.88em;margin-top:4px}
+.method{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:20px 24px;margin-top:16px}
+.method li{margin:6px 0;font-size:0.95em}
+.tag{display:inline-block;background:#e3f2fd;color:#1565c0;font-size:0.8em;padding:2px 8px;border-radius:4px;margin-right:4px}
+</style>
+</head>
+<body>
+
+<h1>🔍 台灣事實查核報告 — 主題分布視覺化</h1>
+<p class="subtitle">BERTopic 主題建模 ｜ 4,125 篇報告 ｜ 121,755 句 ｜ 2018–2026</p>
+<p class="meta">更新：2026-04-29 ｜ 停詞優化版</p>
+
+<h2>📰 謠言段落（Claim）— 122 主題</h2>
+<p>被查核的謠言/待查核聲明，共 12,295 句</p>
+<div class="grid">
+  <div class="card"><a href="claim_barchart.html">關鍵字長條圖</a><div class="desc">前 40 大主題的關鍵字組合</div></div>
+  <div class="card"><a href="claim_dendrogram.html">層階式聚類</a><div class="desc">主題間的樹狀結構，看哪些主題相近</div></div>
+  <div class="card"><a href="claim_sunburst.html">旭日圖</a><div class="desc">主題比例，從中心往外展開</div></div>
+  <div class="card"><a href="claim_treemap.html">矩形樹圖</a><div class="desc">面積 = 句數，直覺看主題權重</div></div>
+  <div class="card"><a href="claim_intertopic_map.html">主題距離圖</a><div class="desc">2D 投影，看主題群落分布</div></div>
+  <div class="card"><a href="claim_text_tree.txt">文字樹（純文字）</a><div class="desc">完整層次結構，可複製</div></div>
+</div>
+
+<h2>✅ 查核段落（Fact Check）— 606 主題</h2>
+<p>查核員撰寫的查核內容，共 80,151 句</p>
+<div class="grid">
+  <div class="card"><a href="fact_check_barchart.html">關鍵字長條圖</a><div class="desc">前 40 大主題的關鍵字組合</div></div>
+  <div class="card"><a href="fact_check_dendrogram.html">層階式聚類</a><div class="desc">查核內容的主題樹狀結構</div></div>
+  <div class="card"><a href="fact_check_sunburst.html">旭日圖</a><div class="desc">查核主題比例分布</div></div>
+  <div class="card"><a href="fact_check_treemap.html">矩形樹圖</a><div class="desc">查核主題權重</div></div>
+  <div class="card"><a href="fact_check_intertopic_map.html">主題距離圖</a><div class="desc">查核主題群落分布</div></div>
+  <div class="card"><a href="fact_check_text_tree.txt">文字樹（純文字）</a><div class="desc">完整層次結構</div></div>
+</div>
+
+<h2>📄 全部合併（Sentences）— 1,064 主題</h2>
+<p>謠言 + 查核合併建模，共 121,755 句</p>
+<div class="grid">
+  <div class="card"><a href="sentences_barchart.html">關鍵字長條圖</a><div class="desc">全量前 40 大主題</div></div>
+  <div class="card"><a href="sentences_dendrogram.html">層階式聚類</a><div class="desc">全量主題樹狀結構</div></div>
+  <div class="card"><a href="sentences_sunburst.html">旭日圖</a><div class="desc">全量主題比例</div></div>
+  <div class="card"><a href="sentences_treemap.html">矩形樹圖</a><div class="desc">全量主題權重</div></div>
+  <div class="card"><a href="sentences_intertopic_map.html">主題距離圖</a><div class="desc">全量主題群落</div></div>
+  <div class="card"><a href="sentences_text_tree.txt">文字樹（純文字）</a><div class="desc">完整層次結構</div></div>
+</div>
+
+<h2>⚙️ 方法論</h2>
+<div class="method">
+<ul>
+  <li><span class="tag">資料</span>台灣事實查核中心官網公開報告全量爬取（4,125 篇）</li>
+  <li><span class="tag">斷詞</span>CKIP（句子級 word segmentation + POS tagging）</li>
+  <li><span class="tag">停詞</span>通用中文停詞表 + TFC 領域專用停詞（查核格式語、記者署名、傳播管道描述詞）</li>
+  <li><span class="tag">嵌入</span>Qwen3-Embedding-2B（2048 維）</li>
+  <li><span class="tag">建模</span>BERTopic（UMAP + HDBSCAN + c-TF-IDF with BM25 weighting）</li>
+  <li><span class="tag">視覺化</span>Plotly（互動式，可 hover / zoom）</li>
+  <li><span class="tag">日期</span>2026-04-29（停詞優化版）</li>
 </ul>
-<h2>📊 模型: fact</h2><ul>
-<li><a href='fact_check_barchart.html'>Check Barchart</a></li>
-<li><a href='fact_check_dendrogram.html'>Check Dendrogram</a></li>
-<li><a href='fact_check_intertopic_map.html'>Check Intertopic Map</a></li>
-<li><a href='fact_check_sunburst.html'>Check Sunburst</a></li>
-<li><a href='fact_check_treemap.html'>Check Treemap</a></li>
-</ul>
-<h2>📊 模型: sentences</h2><ul>
-<li><a href='sentences_barchart.html'>Barchart</a></li>
-<li><a href='sentences_dendrogram.html'>Dendrogram</a></li>
-<li><a href='sentences_intertopic_map.html'>Intertopic Map</a></li>
-<li><a href='sentences_sunburst.html'>Sunburst</a></li>
-<li><a href='sentences_treemap.html'>Treemap</a></li>
-</ul>
-<h2>📝 文字樹</h2><ul>
-<li><a href='claim_text_tree.txt'>claim_text_tree</a></li>
-<li><a href='fact_check_text_tree.txt'>fact_check_text_tree</a></li>
-<li><a href='sentences_text_tree.txt'>sentences_text_tree</a></li>
-</ul>
-</body></html>
+</div>
+
+<p class="meta" style="margin-top:3em;text-align:center">教學研究用途 ｜ 資料皆來自公開網頁</p>
+
+</body>
+</html>
